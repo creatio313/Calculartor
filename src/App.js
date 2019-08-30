@@ -40,8 +40,8 @@ function App() {
       </header>
       <Switch>
         <Route exact path="/" component = {Minashi}/>
-        <Route exact path="/Minashi" component = {Minashi}/>
-        <Route exact path="/Holiday" component = {Holiday}/>
+        <Route path="/Minashi" component = {Minashi}/>
+        <Route path="/Holiday" component = {Holiday}/>
       </Switch>
     </Router>
   );
