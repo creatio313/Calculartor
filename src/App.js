@@ -1,15 +1,49 @@
 import React from 'react';
-import './App.css';
+
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem'
 
 import Minashi from './Minashi.js';
-import Holiday from './Holiday.js'
+import Holiday from './Holiday.js';
 
 function App() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
   return (
-    <div className="App">
-      <Minashi />
-      <Holiday />
-    </div>
+    <Router className="App">
+      <header>
+        <h1>労働契約計算補助ツール</h1>
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+          Menu
+        </Button>
+        <Menu
+          id="menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}><Link to="Minashi">みなし残業カウンタ</Link></MenuItem>
+          <MenuItem onClick={handleClose}><Link to="/Holiday">休日数カウンタ</Link></MenuItem>
+        </Menu>
+        <hr/>
+      </header>
+      <Switch>
+        <Route exact path="/" component = {Minashi}/>
+        <Route exact path="/Minashi" component = {Minashi}/>
+        <Route exact path="/Holiday" component = {Holiday}/>
+      </Switch>
+    </Router>
   );
 }
 
