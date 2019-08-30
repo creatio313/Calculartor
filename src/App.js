@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem'
+import Typography from '@material-ui/core/Typography';
 
 import Minashi from './Minashi.js';
 import Holiday from './Holiday.js';
@@ -22,7 +23,9 @@ function App() {
   return (
     <Router className="App">
       <header>
-        <h1>労働契約計算補助ツール</h1>
+        <Typography variant="h3" component="h1">
+          労働契約計算
+        </Typography>
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
           Menu
         </Button>
