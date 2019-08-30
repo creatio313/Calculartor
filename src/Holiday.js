@@ -37,9 +37,9 @@ export default function Holiday(props) {
     <Typography variant="h4" component="h2">
       休日数カウンタ
     </Typography>
+      <p>{ total }</p>
     <FormControl component="fieldset" className={classes.formControl}>
       <FormLabel component="legend">長期休暇を除く休日数</FormLabel>
-      <p>{ total }</p>
       <RadioGroup
         aria-label="base"
         name="base"
