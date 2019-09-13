@@ -27,10 +27,7 @@ export default function Holiday(props) {
   const [summer, setSummer] = useState("0");
   const [winter, setWinter] = useState("0");
 
-  if(isNaN(summer))setSummer(0);
-  if(isNaN(winter))setWinter(0);
-
-  let total = parseInt(base) + parseInt(isNaN(summer)? 0: summer) + parseInt(isNaN(winter)? 0: winter);
+  let total = parseInt(base) + (summer===""? 0: parseInt(summer)) + (winter===""? 0:parseInt(winter));
 
   return(
   <React.Fragment>
