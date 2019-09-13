@@ -82,13 +82,13 @@ export default class Minashi extends React.Component {
                     <TableCell component="th" scope="row">
                       基本時給
                     </TableCell>
-                    <TableCell align="right">{this.state.base}</TableCell>
+                    <TableCell align="right">{Math.ceil(this.state.base)}</TableCell>
                   </TableRow>
                   <TableRow key="basesalary">
                     <TableCell component="th" scope="row">
                       みなし残業なしの月給
                     </TableCell>
-                    <TableCell align="right">{this.state.base * this.state.workTime}</TableCell>
+                    <TableCell align="right">{Math.ceil(this.state.totalSalary - this.state.base * this.state.minashiTime)}</TableCell>
                   </TableRow>
               </TableBody>
             </Table>
@@ -101,7 +101,7 @@ export default class Minashi extends React.Component {
               </p>
           </Paper>
         <hr/>
-        <p><small>小数点を繰り上げて計算しているため、時給に1円未満、基本給に200円前後の誤差があります。</small></p>
+        <p><small>小数点を繰り上げて計算しているため、時給に1円未満の誤差があります。</small></p>
     </div>
   }
 
@@ -137,7 +137,7 @@ export default class Minashi extends React.Component {
   }
 
   calculate(salary, time, worktime){
-    let val = Math.ceil(salary/(parseInt(worktime) + 1.25 * time));
+    let val = salary/(parseInt(worktime) + 1.25 * time);
     this.setState({
       base: val
     });
