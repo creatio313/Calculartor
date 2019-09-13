@@ -88,7 +88,7 @@ export default class Minashi extends React.Component {
                     <TableCell component="th" scope="row">
                       みなし残業なしの月給
                     </TableCell>
-                    <TableCell align="right">{Math.ceil(this.state.totalSalary - this.state.base * this.state.minashiTime)}</TableCell>
+                    <TableCell align="right">{Math.ceil(this.state.totalSalary - this.state.base * this.state.minashiTime * 1.25)}</TableCell>
                   </TableRow>
               </TableBody>
             </Table>
